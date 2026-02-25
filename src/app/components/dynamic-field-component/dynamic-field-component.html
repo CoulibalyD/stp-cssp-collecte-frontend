@@ -1,0 +1,135 @@
+<div class="dynamic-field" [class.required]="field.isRequired">
+  <label [for]="'field-' + fieldId" class="field-label">
+    {{ field.label }}
+    <span *ngIf="field.isRequired" class="required-star">*</span>
+  </label>
+
+  <div class="field-control">
+    <ng-container [ngSwitch]="field.type">
+      <!-- TEXT -->
+      <input *ngSwitchCase="'TEXT'"
+             [id]="'field-' + fieldId"
+             type="text"
+             class="form-control"
+             [value]="value"
+             [placeholder]="field.placeholder"
+             (input)="onInputChange($event)"
+             [disabled]="disabled"
+             [required]="field.isRequired" />
+
+      <!-- NUMBER -->
+      <input *ngSwitchCase="'NUMBER'"
+             [id]="'field-' + fieldId"
+             type="number"
+             class="form-control"
+             [value]="value"
+             [placeholder]="field.placeholder"
+             [min]="field.min"
+             [max]="field.max"
+             [step]="field.step"
+             (input)="onInputChange($event)"
+             [disabled]="disabled"
+             [required]="field.isRequired" />
+
+      <!-- DATE -->
+      <input *ngSwitchCase="'DATE'"
+             [id]="'field-' + fieldId"
+             type="date"
+             class="form-control"
+             [value]="value"
+             (input)="onInputChange($event)"
+             [disabled]="disabled"
+             [required]="field.isRequired" />
+
+      <!-- DROPDOWN -->
+      <select *ngSwitchCase="'DROPDOWN'"
+              [id]="'field-' + fieldId"
+              class="form-select"
+              [value]="value"
+              (change)="onSelectChange($any($event.target).value)"
+              [disabled]="disabled"
+              [required]="field.isRequired">
+        <option value="">-- Sélectionner --</option>
+        <option *ngFor="let opt of field.options" [value]="opt.value">
+          {{ opt.label }}
+        </option>
+      </select>
+
+      <!-- TEXTAREA -->
+      <textarea *ngSwitchCase="'TEXTAREA'"
+                [id]="'field-' + fieldId"
+                class="form-control"
+                [value]="value"
+                [placeholder]="field.placeholder"
+                [rows]="field.rows || 4"
+                (input)="onInputChange($event)"
+                [disabled]="disabled"
+                [required]="field.isRequired"></textarea>
+
+      <!-- EMAIL -->
+      <input *ngSwitchCase="'EMAIL'"
+             [id]="'field-' + fieldId"
+             type="email"
+             class="form-control"
+             [value]="value"
+             [placeholder]="field.placeholder"
+             (input)="onInputChange($event)"
+             [disabled]="disabled"
+             [required]="field.isRequired" />
+
+      <!-- TEL -->
+      <input *ngSwitchCase="'TEL'"
+             [id]="'field-' + fieldId"
+             type="tel"
+             class="form-control"
+             [value]="value"
+             [placeholder]="field.placeholder"
+             (input)="onInputChange($event)"
+             [disabled]="disabled"
+             [required]="field.isRequired" />
+
+      <!-- RADIO -->
+      <div *ngSwitchCase="'RADIO'" class="radio-group">
+        <div *ngFor="let opt of field.options" class="form-check">
+          <input class="form-check-input"
+                 type="radio"
+                 [name]="'field-' + fieldId"
+                 [id]="'field-' + fieldId + '-' + opt.value"
+                 [value]="opt.value"
+                 [checked]="value === opt.value"
+                 (change)="onRadioChange(opt.value)"
+                 [disabled]="disabled"
+                 [required]="field.isRequired" />
+          <label class="form-check-label" [for]="'field-' + fieldId + '-' + opt.value">
+            {{ opt.label }}
+          </label>
+        </div>
+      </div>
+
+      <!-- CHECKBOX -->
+      <div *ngSwitchCase="'CHECKBOX'" class="form-check">
+        <input class="form-check-input"
+               type="checkbox"
+               [id]="'field-' + fieldId"
+               [checked]="value"
+               (change)="onCheckboxChange($event)"
+               [disabled]="disabled"
+               [required]="field.isRequired" />
+        <label class="form-check-label" [for]="'field-' + fieldId">
+          {{ field.label }}
+        </label>
+      </div>
+
+      <!-- FILE -->
+      <input *ngSwitchCase="'FILE'"
+             [id]="'field-' + fieldId"
+             type="file"
+             class="form-control"
+             [accept]="field.accept"
+             [multiple]="field.multiple"
+             (change)="onFileChange($event)"
+             [disabled]="disabled"
+             [required]="field.isRequired" />
+    </ng-container>
+  </div>
+</div>

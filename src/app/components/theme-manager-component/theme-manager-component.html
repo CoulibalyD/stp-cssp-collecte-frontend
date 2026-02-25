@@ -1,0 +1,39 @@
+<div class="theme-manager card">
+  <div class="card-header">
+    <h3>Gestion des Thèmes</h3>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Titre du thème"
+        [(ngModel)]="newTheme.title"
+        (keyup.enter)="saveTheme()"
+      />
+      <textarea
+        class="form-control mt-2"
+        placeholder="Description (optionnelle)"
+        [(ngModel)]="newTheme.description"
+        rows="2"
+      ></textarea>
+      <button class="btn btn-primary mt-2" (click)="saveTheme()">
+        Ajouter le thème
+      </button>
+    </div>
+
+    <h4 class="mt-4">Thèmes existants</h4>
+    <ul class="theme-list">
+      <li *ngFor="let theme of themes" class="theme-item">
+        <div class="theme-info">
+          <strong>{{ theme.title }}</strong>
+          <span *ngIf="theme.description" class="text-muted"> - {{ theme.description }}</span>
+        </div>
+        <button class="btn-icon" (click)="deleteTheme(theme.id!)" title="Supprimer">
+          <span class="icon">🗑️</span>
+        </button>
+      </li>
+      <li *ngIf="themes.length === 0" class="text-muted">Aucun thème pour le moment.</li>
+    </ul>
+  </div>
+</div>

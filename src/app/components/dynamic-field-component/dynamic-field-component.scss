@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.dynamic-field {
+  margin-bottom: $spacing-md;
+
+  .field-label {
+    display: block;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-xs;
+    color: $dark;
+
+    .required-star {
+      color: $danger;
+      margin-left: $spacing-xs;
+    }
+  }
+
+  .form-control,
+  .form-select {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 1px solid lighten($dark, 60%);
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
+    }
+
+    &:disabled {
+      background-color: $light;
+      opacity: 0.7;
+    }
+  }
+
+  .radio-group {
+    .form-check {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  .form-check-input {
+    margin-right: $spacing-xs;
+  }
+
+  &.ng-invalid.ng-touched {
+    .form-control, .form-select, .form-check-input {
+      border-color: $danger;
+    }
+  }
+}

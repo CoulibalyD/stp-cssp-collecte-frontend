@@ -1,0 +1,23 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.form-builder {
+  @include fade-in;
+
+  .field-item {
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: rgba($primary, 0.02);
+    }
+
+    .bg-light {
+      background-color: $light !important;
+    }
+  }
+
+  h5 {
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-md;
+    color: $dark;
+  }
+}

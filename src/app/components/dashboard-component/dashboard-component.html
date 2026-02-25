@@ -1,0 +1,26 @@
+<div class="dashboard container">
+  <header class="dashboard-header">
+    <h1>Collecte Data - Administration</h1>
+  </header>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <app-theme-manager (themeChanged)="onThemeOrActivityChanged()"></app-theme-manager>
+    </div>
+    <div class="col-12 col-md-6">
+      <app-activity-manager (activityChanged)="onThemeOrActivityChanged()"></app-activity-manager>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <app-form-builder (formCreated)="onFormCreated()"></app-form-builder>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <app-form-list [forms]="forms"></app-form-list>
+    </div>
+  </div>
+</div>

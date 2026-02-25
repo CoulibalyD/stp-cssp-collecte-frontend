@@ -1,0 +1,51 @@
+<div class="activity-manager card">
+  <div class="card-header">
+    <h3>Gestion des Activités</h3>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Titre de l'activité"
+        [(ngModel)]="newActivite.title"
+      />
+      <textarea
+        class="form-control mt-2"
+        placeholder="Description"
+        [(ngModel)]="newActivite.description"
+        rows="2"
+      ></textarea>
+      <input
+        type="date"
+        class="form-control mt-2"
+        [(ngModel)]="newActivite.activiteDate"
+      />
+      <select class="form-control mt-2" [(ngModel)]="newActivite.themeId">
+        <option [value]="0">-- Choisir un thème --</option>
+        <option *ngFor="let theme of themes" [value]="theme.id">
+          {{ theme.title }}
+        </option>
+      </select>
+      <button class="btn btn-primary mt-2" (click)="saveActivite()">
+        Ajouter l'activité
+      </button>
+    </div>
+
+    <h4 class="mt-4">Activités existantes</h4>
+    <div class="activity-list">
+      <div *ngFor="let act of activites" class="activity-item">
+        <div class="activity-info">
+          <div><strong>{{ act.title }}</strong></div>
+          <div class="text-muted small">{{ act.description }}</div>
+          <div class="text-muted small">Date: {{ act.activiteDate | date:'dd/MM/yyyy' }}</div>
+          <div class="theme-badge">{{ getThemeName(act.themeId) }}</div>
+        </div>
+        <button class="btn-icon" (click)="deleteActivite(act.id!)" title="Supprimer">
+          <span class="icon">🗑️</span>
+        </button>
+      </div>
+      <div *ngIf="activites.length === 0" class="text-muted">Aucune activité pour le moment.</div>
+    </div>
+  </div>
+</div>

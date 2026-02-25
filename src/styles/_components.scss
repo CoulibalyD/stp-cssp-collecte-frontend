@@ -1,0 +1,68 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.card {
+  background: white;
+  border-radius: $border-radius-lg;
+  @include card-shadow;
+  overflow: hidden;
+
+  .card-header {
+    padding: $spacing-lg;
+    background: $light;
+    border-bottom: 1px solid rgba($dark, 0.1);
+    font-weight: $font-weight-bold;
+  }
+
+  .card-body {
+    padding: $spacing-lg;
+  }
+
+  .card-footer {
+    padding: $spacing-lg;
+    background: $light;
+    border-top: 1px solid rgba($dark, 0.1);
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &-primary {
+    background: $gradient-primary;
+    color: white;
+
+    &:hover {
+      background: darken($primary, 10%);
+    }
+  }
+
+  &-success {
+    background: $success;
+    color: white;
+  }
+
+  &-danger {
+    background: $danger;
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.form-control, .form-select {
+  // déjà défini dans dynamic-field, mais on peut mettre une version de base
+}

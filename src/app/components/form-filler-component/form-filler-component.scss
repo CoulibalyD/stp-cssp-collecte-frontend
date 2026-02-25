@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.form-filler {
+  @include fade-in;
+
+  .card {
+    background: white;
+    border-radius: $border-radius-lg;
+    @include card-shadow;
+    overflow: hidden;
+    margin-top: $spacing-xl;
+
+    .card-header {
+      background: $gradient-primary;
+      color: white;
+      padding: $spacing-lg $spacing-xl;
+
+      h2 {
+        margin-bottom: $spacing-xs;
+        font-size: 1.8rem;
+      }
+
+      p {
+        opacity: 0.9;
+        margin: 0;
+      }
+    }
+
+    .card-body {
+      padding: $spacing-xl;
+
+      .btn-primary {
+        background: $gradient-primary;
+        border: none;
+        padding: $spacing-md $spacing-lg;
+        font-weight: $font-weight-bold;
+        border-radius: $border-radius-md;
+        transition: transform 0.2s;
+
+        &:hover:not(:disabled) {
+          transform: translateY(-2px);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

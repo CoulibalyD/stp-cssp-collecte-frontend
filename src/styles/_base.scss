@@ -1,0 +1,43 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $dark;
+  background-color: $light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// Focus visible pour accessibilité
+:focus-visible {
+  outline: 2px solid $primary;
+  outline-offset: 2px;
+}

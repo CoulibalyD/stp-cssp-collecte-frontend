@@ -1,0 +1,75 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.form-list {
+  @include fade-in;
+
+  h3 {
+    margin-bottom: $spacing-lg;
+    color: $dark;
+  }
+
+  .form-card {
+    height: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-4px);
+      @include card-shadow;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card-title {
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-sm;
+    }
+
+    .form-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: $spacing-md 0;
+
+      .badge {
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-sm;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+
+        &-success {
+          background-color: $success;
+          color: white;
+        }
+
+        &-warning {
+          background-color: $warning;
+          color: white;
+        }
+      }
+    }
+
+    .form-actions {
+      margin-top: auto;
+      text-align: right;
+
+      .btn-primary {
+        background: $gradient-primary;
+        border: none;
+        padding: $spacing-xs $spacing-md;
+        border-radius: $border-radius-sm;
+        color: white;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}

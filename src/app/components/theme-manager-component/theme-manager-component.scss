@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.theme-manager {
+  @include fade-in;
+
+  .form-group {
+    margin-bottom: $spacing-lg;
+  }
+
+  .theme-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .theme-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $spacing-sm $spacing-md;
+      border-bottom: 1px solid rgba($dark, 0.1);
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: rgba($primary, 0.05);
+      }
+
+      .theme-info {
+        flex: 1;
+      }
+
+      .btn-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: $spacing-xs;
+        border-radius: $border-radius-sm;
+        color: $danger;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: rgba($danger, 0.1);
+        }
+
+        .icon {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

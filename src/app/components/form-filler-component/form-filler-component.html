@@ -1,0 +1,25 @@
+<div class="form-filler container" *ngIf="formStructure">
+  <div class="card">
+    <div class="card-header">
+      <h2>{{ formStructure.title }}</h2>
+      <p>{{ formStructure.description }}</p>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="submitForm()" #form="ngForm">
+        <div *ngFor="let field of formStructure.fields" class="mb-3">
+          <app-dynamic-field
+            [field]="field"
+            [fieldId]="field.id!"
+            [(ngModel)]="userResponses[field.id!]"
+            [name]="'field-' + field.id"
+            [required]="field.isRequired">
+          </app-dynamic-field>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">
+          Envoyer la soumission
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

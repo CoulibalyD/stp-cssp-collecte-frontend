@@ -1,0 +1,11 @@
+:root {
+  --bg-color: #{$light};
+  --text-color: #{$dark};
+  --card-bg: white;
+}
+
+.dark-theme {
+  --bg-color: #{$dark};
+  --text-color: #{$light};
+  --card-bg: #2d2d2d;
+}
