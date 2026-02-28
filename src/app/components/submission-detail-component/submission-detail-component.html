@@ -1,0 +1,52 @@
+<div *ngIf="loading" class="text-center mt-5">
+  <div class="spinner-border text-primary" role="status"></div>
+  <p>Chargement du détail de la soumission...</p>
+</div>
+
+<div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+
+<div class="submission-detail container mt-4" *ngIf="!loading && submission">
+  <div class="card shadow">
+    <div class="card-header bg-light">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Soumission #{{ submission.id }}</h2>
+        <span class="badge bg-info text-dark">ID Formulaire: {{ submission.formId }}</span>
+      </div>
+      <p class="mb-1"><strong>Agent :</strong> {{ submission.submitterId }}</p>
+      <p class="mb-0 text-muted">
+        Soumis le {{ submission.createdDate | date:'dd/MM/yyyy à HH:mm' }}
+      </p>
+    </div>
+
+    <div class="card-body">
+      <h4 class="border-bottom pb-2 mb-3">Réponses collectées</h4>
+      <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+          <th style="width: 40%">Question</th>
+          <th style="width: 60%">Réponse</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let resp of submission.responses">
+          <td class="fw-bold">{{ resp.questionLabel }}</td>
+          <td>
+            <ng-container *ngIf="resp.answerValue?.includes(','); else simpleVal">
+                <span *ngFor="let val of resp.answerValue.split(',')" class="badge bg-secondary me-1">
+                  {{ val }}
+                </span>
+            </ng-container>
+            <ng-template #simpleVal>{{ resp.answerValue }}</ng-template>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-footer d-flex justify-content-end">
+      <a routerLink="/dashboard" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Retour au Dashboard
+      </a>
+    </div>
+  </div>
+</div>

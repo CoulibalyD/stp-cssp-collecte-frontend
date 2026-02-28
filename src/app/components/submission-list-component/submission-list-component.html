@@ -1,0 +1,19 @@
+<div class="submission-list">
+  <h4>Soumissions pour ce formulaire</h4>
+  <div *ngIf="loading" class="text-center">Chargement...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="!loading && !error && submissions.length === 0" class="alert alert-info">
+    Aucune soumission pour l'instant.
+  </div>
+  <div *ngIf="submissions.length > 0" class="list-group">
+    <a *ngFor="let sub of submissions"
+       [routerLink]="['/submission', sub.id]"
+       class="list-group-item list-group-item-action">
+      <div class="d-flex justify-content-between">
+        <span>Soumission du {{ sub.submittedAt | date:'dd/MM/yyyy HH:mm' }}</span>
+        <span class="badge bg-secondary">par {{ sub.submitterId }}</span>
+      </div>
+      <small>{{ sub.responses.length }} réponse(s)</small>
+    </a>
+  </div>
+</div>

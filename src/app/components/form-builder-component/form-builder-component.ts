@@ -33,9 +33,10 @@ export class FormBuilderComponent implements OnInit {
     { value: 'EMAIL', label: 'Email' },
     { value: 'TEL', label: 'Téléphone' },
     { value: 'DROPDOWN', label: 'Liste déroulante' },
+    { value: 'MULTI_SELECT', label: 'Sélection multiple' },
     { value: 'RADIO', label: 'Boutons radio' },
-    { value: 'CHECKBOX', label: 'Case à cocher' },
-   ];
+    { value: 'CHECKBOX', label: 'Cases à cocher' }
+  ];
 
   constructor(
     private activiteService: ActiviteService,

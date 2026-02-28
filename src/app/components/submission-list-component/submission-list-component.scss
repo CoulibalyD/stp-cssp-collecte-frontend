@@ -1,0 +1,12 @@
+@use '../../../styles/variables' as *;
+
+.submission-list {
+  margin-top: $spacing-md;
+
+  .list-group-item {
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: rgba($primary, 0.05);
+    }
+  }
+}

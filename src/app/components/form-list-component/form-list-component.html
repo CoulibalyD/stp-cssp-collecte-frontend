@@ -18,7 +18,9 @@
             <a [routerLink]="['/fill-form', form.id]" class="btn btn-sm btn-primary">
               Remplir
             </a>
-            <!-- Ajoutez d'autres actions si nécessaire -->
+            <a [routerLink]="['/form', form.id, 'submissions']" class="btn btn-sm btn-info">
+              Voir soumissions
+            </a>
           </div>
         </div>
       </div>

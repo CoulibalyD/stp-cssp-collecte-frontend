@@ -67,14 +67,14 @@
         </div>
 
         <!-- Options pour DROPDOWN et RADIO -->
-        <div *ngIf="field.type === 'DROPDOWN' || field.type === 'RADIO'">
-          <h6>Options</h6>
+        <div *ngIf="['DROPDOWN', 'RADIO', 'CHECKBOX', 'MULTI_SELECT'].includes(field.type)">
+          <h6>Options de réponse</h6>
           <div *ngFor="let opt of field.options; let j = index" class="d-flex gap-2 mb-1">
-            <input [(ngModel)]="opt.label" placeholder="Label" class="form-control form-control-sm">
-            <input [(ngModel)]="opt.value" placeholder="Valeur" class="form-control form-control-sm">
+            <input [(ngModel)]="opt.label" placeholder="Texte affiché (Label)" class="form-control form-control-sm">
+            <input [(ngModel)]="opt.value" placeholder="Valeur stockée (ex: YES)" class="form-control form-control-sm">
             <button class="btn btn-sm btn-outline-danger" (click)="removeOption(field, j)">X</button>
           </div>
-          <button class="btn btn-sm btn-outline-info" (click)="addOption(field)">+ Ajouter option</button>
+          <button class="btn btn-sm btn-outline-info mt-1" (click)="addOption(field)">+ Ajouter une option</button>
         </div>
       </div>
     </div>

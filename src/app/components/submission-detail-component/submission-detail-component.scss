@@ -1,0 +1,8 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.submission-detail {
+  .card {
+    @include card-shadow;
+  }
+}

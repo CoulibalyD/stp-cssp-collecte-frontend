@@ -21,7 +21,7 @@ export interface FormEntity { // <-- On change 'Form' par 'FormEntity'
 export interface FormField {
   id?: number;
   label: string;
-  type: 'TEXT' | 'NUMBER' | 'DATE' | 'DROPDOWN' | 'TEXTAREA' | 'EMAIL' | 'TEL' | 'RADIO' | 'CHECKBOX';
+  type: 'TEXT' | 'NUMBER' | 'DATE' | 'DROPDOWN' | 'TEXTAREA' | 'EMAIL' | 'TEL' | 'RADIO' | 'CHECKBOX'| 'MULTI_SELECT';
   isRequired: boolean;
   orderIndex: number;
   options?: FieldOption[]; // pour DROPDOWN et RADIO
@@ -48,5 +48,24 @@ export interface FormSubmission {
 
 export interface FieldResponse {
   fieldId: number;
+  value: string;
+}
+
+export interface FormSubmissionResponse {
+  id: number;
+  formId: number;
+  formTitle?: string;
+  submitterId: string;
+  createdDate: string;
+  submittedAt: string; // ISO date
+  responses: FieldResponseDetail[];
+}
+
+export interface FieldResponseDetail {
+  fieldId: number;
+  fieldLabel: string;
+  fieldType: string;
+  questionLabel: string;
+  answerValue: string;
   value: string;
 }
